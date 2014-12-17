@@ -44,12 +44,6 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" use direct x if available
-if has("directx") && $VIM_USE_DIRECTX != '0'
-  set renderoptions=type:directx
-  let s:use_directx=1
-endif
-
 "Apperance
 syntax enable
 set background=dark
@@ -59,8 +53,6 @@ else
     colorscheme desert
 endif
 
-"set guifont=Consolas:h11:cDEFAULT
-"set guifont=liberationmono
 set number
 set tabstop=4
 set shiftwidth=4
@@ -73,6 +65,7 @@ set backspace=indent,eol,start
 set ruler
 set showcmd
 set colorcolumn=80
+set autochdir
 if has('mouse')
     set mouse=a
 endif
