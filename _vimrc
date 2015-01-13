@@ -53,6 +53,7 @@ else
     colorscheme desert
 endif
 
+
 set number
 set tabstop=4
 set shiftwidth=4
@@ -66,6 +67,12 @@ set ruler
 set showcmd
 set colorcolumn=80
 set autochdir
+if has('gui_win32')
+    set guifont=Consolas:h11:cANSI
+    "set guifont=ProggyClean:h12
+    set guioptions-=m   " remove menu bar
+    set guioptions-=T   " remove toolbar
+endif
 if has('mouse')
     set mouse=a
 endif
