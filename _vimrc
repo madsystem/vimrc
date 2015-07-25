@@ -1,10 +1,20 @@
+"dirs / swap
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/vimfiles/bundle/Vundle.vim/
-let path='~/vimfiles/bundle'
-call vundle#begin(path)
+
+" use this for linux
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" use this for windows
+"set rtp+=~/vimfiles/bundle/Vundle.vim/
+"let path='~/vimfiles/bundle'
+"call vundle#begin(path)
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -75,3 +85,14 @@ endif
 if has('mouse')
     set mouse=a
 endif
+
+
+"dirs / swap
+"use this for linux
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+"use this for windows
+"set backupdir=~/vimfiles/backup//
+"set directory=~/vimfiles/swap//
+"set undodir=~/vimfiles/undo//
