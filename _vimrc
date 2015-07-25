@@ -1,7 +1,3 @@
-"dirs / swap
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
