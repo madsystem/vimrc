@@ -3,23 +3,33 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 
-" use this for linux
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+if has('win32') || has('win64') 
+    " use this for windows
+    set rtp+=~/vimfiles/bundle/Vundle.vim/
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
+else
+    " use this for nix 
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin()
+endif
 
-" use this for windows
-"set rtp+=~/vimfiles/bundle/Vundle.vim/
-"let path='~/vimfiles/bundle'
-"call vundle#begin(path)
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+
+"color schemes
+Plugin 'nanotech/jellybeans.vim'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'whatyouhide/vim-gotham'
+"Plugin 'jonathanfilip/vim-lucius'
+Plugin 'vim-scripts/xoria256.vim'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,11 +62,12 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "Apperance
 syntax enable
-set background=dark
 if has('gui_running')
-    colorscheme solarized
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    colorscheme jellybeans
 else
-    colorscheme desert
+    colorscheme jellybeans
 endif
 
 set number
@@ -72,23 +83,27 @@ set ruler
 set showcmd
 set colorcolumn=80
 set autochdir
-if has('gui_win32')
-    set guifont=Consolas:h11:cANSI
-    "set guifont=ProggyClean:h12
-    set guioptions-=m   " remove menu bar
-    set guioptions-=T   " remove toolbar
-endif
+
+if has('win32') || has('win64') 
+    set guifont=Consolas:h11
+else
+    set guifont=Consolas\ 12
+end
+
 if has('mouse')
     set mouse=a
 endif
 
 
 "dirs / swap
-"use this for linux
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-"use this for windows
-"set backupdir=~/vimfiles/backup//
-"set directory=~/vimfiles/swap//
-"set undodir=~/vimfiles/undo//
+if has('win32') || has('win64') 
+    "use this for windows
+    set backupdir=~/vimfiles/backup//
+    set directory=~/vimfiles/swap//
+    set undodir=~/vimfiles/undo//
+else
+    "use this for linux
+    set backupdir=~/.vim/backup//
+    set directory=~/.vim/swap//
+    set undodir=~/.vim/undo//
+endif
