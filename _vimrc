@@ -87,7 +87,7 @@ set autochdir
 if has('win32') || has('win64') 
     set guifont=Consolas:h11
 else
-    set guifont=Consolas\ 12
+    set guifont=Consolas\ 11
 end
 
 if has('mouse')
