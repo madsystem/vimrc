@@ -84,10 +84,20 @@ set showcmd
 set colorcolumn=80
 set autochdir
 
+"Buffers
+nnoremap <F5> :buffers<CR>:buffer<Space>
+
+"Nerdtree
+"let NERDTreeQuitOnOpen = 1
+
 if has('win32') || has('win64') 
     set guifont=Consolas:h11
 else
-    set guifont=Consolas\ 11
+    if has('gui_running')
+        set guifont=Consolas\ 10
+    else
+        set guifont=Consolas\ 11
+    end
 end
 
 if has('mouse')
