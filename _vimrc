@@ -10,7 +10,7 @@ if has('win32') || has('win64')
     call vundle#begin(path)
 else
     " use this for nix 
-    set rtp+=~/.vim/bundle/Vundle.vim/
+    set rtp+=~/.config/.vim/bundle/Vundle.vim/
     call vundle#begin()
 endif
 
@@ -107,13 +107,17 @@ endif
 
 "dirs / swap
 if has('win32') || has('win64') 
-    "use this for windows
+    silent execute ':!mkdir "~\vimfiles\tmp\backup"'
+    silent execute ':!mkdir "~\vimfiles\tmp\swap"'
+    silent execute ':!mkdir "~\vimfiles\tmp\undo"'
     set backupdir=~/vimfiles/backup//
     set directory=~/vimfiles/swap//
     set undodir=~/vimfiles/undo//
 else
-    "use this for linux
-    set backupdir=~/.vim/backup//
-    set directory=~/.vim/swap//
-    set undodir=~/.vim/undo//
+    silent execute '!mkdir -p $HOME/.config/.vim/backup'
+    silent execute '!mkdir -p $HOME/.config/.vim/swap'
+    silent execute '!mkdir -p $HOME/.config/.vim/undo'
+    set backupdir=~/.config/.vim/backup//
+    set directory=~/.config/.vim/swap//
+    set undodir=~/.config/.vim/undo//
 endif
