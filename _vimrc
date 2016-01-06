@@ -7,13 +7,13 @@ if has('win32') || has('win64')
     " use this for windows
     set rtp+=~/vimfiles/bundle/Vundle.vim/
     let path='~/vimfiles/bundle'
-    call vundle#begin(path)
 else
     " use this for nix 
-    set rtp+=~/.config/.vim/bundle/Vundle.vim/
-    call vundle#begin()
+    set rtp+=~/.config/vim/bundle/Vundle.vim/
+    let path='~/.config/vim/bundle/plugins'
 endif
 
+call vundle#begin(path)
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -97,6 +97,7 @@ else
         set guifont=Consolas\ 10
     else
         set guifont=Consolas\ 11
+        set t_Co=256
     end
 end
 
@@ -114,10 +115,10 @@ if has('win32') || has('win64')
     set directory=~/vimfiles/swap//
     set undodir=~/vimfiles/undo//
 else
-    silent execute '!mkdir -p $HOME/.config/.vim/backup'
-    silent execute '!mkdir -p $HOME/.config/.vim/swap'
-    silent execute '!mkdir -p $HOME/.config/.vim/undo'
-    set backupdir=~/.config/.vim/backup//
-    set directory=~/.config/.vim/swap//
-    set undodir=~/.config/.vim/undo//
+    silent execute '!mkdir -p $HOME/.config/vim/backup'
+    silent execute '!mkdir -p $HOME/.config/vim/swap'
+    silent execute '!mkdir -p $HOME/.config/vim/undo'
+    set backupdir=~/.config/vim/backup//
+    set directory=~/.config/vim/swap//
+    set undodir=~/.config/vim/undo//
 endif
