@@ -1,8 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+"YCM
+let g:ycm_global_ycm_extra_conf = '~/.config/vim/bundle/plugins/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+" set the runtime path to include Vundle and initialize
 if has('win32') || has('win64') 
     " use this for windows
     set rtp+=~/vimfiles/bundle/Vundle.vim/
@@ -20,15 +22,17 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'bling/vim-airline'
 Plugin 'MarcWeber/vim-addon-local-vimrc'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
 
 "color schemes
 Plugin 'nanotech/jellybeans.vim'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'whatyouhide/vim-gotham'
 "Plugin 'jonathanfilip/vim-lucius'
-Plugin 'vim-scripts/xoria256.vim'
+"Plugin 'vim-scripts/xoria256.vim'
+
 
 
 call vundle#end()            " required
@@ -46,6 +50,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"""" KEYMAPPINGS """"
 " Tab mappings
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
@@ -60,15 +65,15 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-"Apperance
-syntax enable
-if has('gui_running')
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    colorscheme jellybeans
-else
-    colorscheme jellybeans
-endif
+" NERDTree
+nnoremap <F2> :NERDTreeToggle<CR>
+
+"Buffers
+nnoremap <F5> :buffers<CR>:buffer<Space>
+
+"Highlight stuff
+set hlsearch
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 set number
 set tabstop=4
@@ -84,11 +89,16 @@ set showcmd
 set colorcolumn=80
 set autochdir
 
-"Buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
+"Apperance
+syntax enable
+if has('gui_running')
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    colorscheme jellybeans
+else
+    colorscheme jellybeans
+endif
 
-"Nerdtree
-"let NERDTreeQuitOnOpen = 1
 
 if has('win32') || has('win64') 
     set guifont=Consolas:h11
