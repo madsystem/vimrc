@@ -16,15 +16,13 @@ else
 endif
 
 call vundle#begin(path)
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'bling/vim-airline'
-Plugin 'MarcWeber/vim-addon-local-vimrc'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'terryma/vim-smooth-scroll'
 
 "color schemes
 Plugin 'nanotech/jellybeans.vim'
@@ -32,48 +30,40 @@ Plugin 'nanotech/jellybeans.vim'
 "Plugin 'whatyouhide/vim-gotham'
 "Plugin 'jonathanfilip/vim-lucius'
 "Plugin 'vim-scripts/xoria256.vim'
-
-
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 """" KEYMAPPINGS """"
 " Tab mappings
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <C-Left> :tabprevious<CR>
+nnoremap <silent> <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " move line mappings
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <silent>  <A-j> :m .+1<CR>==
+nnoremap <silent>  <A-k> :m .-2<CR>==
+inoremap <silent>  <A-j> <Esc>:m .+1<CR>==gi
+inoremap <silent>  <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <silent>  <A-j> :m '>+1<CR>gv=gv
+vnoremap <silent>  <A-k> :m '<-2<CR>gv=gv
 
 " NERDTree
-nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 "Buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <silent> <F5> :buffers<CR>:buffer<Space>
 
-"Highlight stuff
+"Search Highlighting
 set hlsearch
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+"Smooth scroll
+noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 set number
 set tabstop=4
@@ -90,15 +80,14 @@ set colorcolumn=80
 set autochdir
 
 "Apperance
+colorscheme jellybeans
+let g:airline_theme='jellybeans'
+let g:airline_powerline_fonts = 1
 syntax enable
 if has('gui_running')
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
-    colorscheme jellybeans
-else
-    colorscheme jellybeans
 endif
-
 
 if has('win32') || has('win64') 
     set guifont=Consolas:h11
@@ -108,8 +97,8 @@ else
     else
         set guifont=Consolas\ 11
         set t_Co=256
-    end
-end
+    endif
+endif
 
 if has('mouse')
     set mouse=a
@@ -132,3 +121,4 @@ else
     set directory=~/.config/vim/swap//
     set undodir=~/.config/vim/undo//
 endif
+
