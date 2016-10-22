@@ -24,6 +24,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'terryma/vim-smooth-scroll'
 
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+
 "color schemes
 Plugin 'nanotech/jellybeans.vim'
 "Plugin 'altercation/vim-colors-solarized'
@@ -48,6 +50,10 @@ inoremap <silent>  <A-j> <Esc>:m .+1<CR>==gi
 inoremap <silent>  <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <silent>  <A-j> :m '>+1<CR>gv=gv
 vnoremap <silent>  <A-k> :m '<-2<CR>gv=gv
+
+" Latex
+" .tex loads latex doc
+let g:tex_flavor='latex' 
 
 " NERDTree
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
@@ -85,8 +91,8 @@ let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1
 syntax enable
 if has('gui_running')
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
+    "set guioptions-=m  "remove menu bar
+    "set guioptions-=T  "remove toolbar
 endif
 
 if has('win32') || has('win64') 
